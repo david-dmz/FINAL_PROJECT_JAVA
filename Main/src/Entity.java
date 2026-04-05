@@ -1,22 +1,43 @@
 abstract class Entity {
-    private String name;
-    private int hp;
-  private   int attack;
-   private int defence;
+    protected String name;
+    protected int hp;
+    protected int attack;
+    protected int defence;
 
-    public Entity(String name, int hp,int attack,int defence) {
+    public Entity(String name, int hp, int attack, int defence) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;
         this.defence = defence;
     }
-  public String getName(){
+
+    // Getters
+    public String getName() {
         return name;
-  }
-  public int getHp() {
+    }
+
+    public int getHp() {
         return hp;
-  }
-  public void setHp(int hp) {
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    // Setters
+    protected void setHp(int hp) {
         this.hp = hp;
-  }
+    }
+
+    protected void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    protected void setDefence(int defence) {
+        this.defence = defence;
+    }
 }
