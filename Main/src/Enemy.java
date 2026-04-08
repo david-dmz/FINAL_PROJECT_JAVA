@@ -1,7 +1,41 @@
 public class Enemy extends Entity {
     public Enemy(String name, int hp, int attack, int defence) {
-        super("Monstre", hp,
+        super("Goblin", hp,
                 attack,
                 defence);
+    }
+
+    public void act(Player target) {
+        double action = Math.random();
+        if (this.hp <= 20 && action < 0.5) { // chance de se regener
+            this.hp += 15;
+            System.out.println(getName() + "prend une possion de vie");
+            return;
+        }
+
+        if (target.getHp() <= 20 && action < 0.3) { // attaque speciale si le joueur a moins de 20 HP
+            specialAttack(target);
+            return;
+        }
+        if (action < 0.7) {
+            attackPlayer(target);
+
+        } else {
+            System.out.println(getName() + "bloque les attaques");
+        }
+    }
+
+    private void attackPlayer(Player target) {
+        int damage = this.attack - target.getDefence();
+        if (damage < 0) damage = 0;
+
+        target.setHp(target.getHp() - damage);
+        System.out.println(getName() + " inflige " + damage + " dégâts à " + target.getName() + " !");
+    }
+
+    private void specialAttack(Player target) {
+        int damage = this.attack * 2; // Double dégâts
+        target.setHp(target.getHp() - damage);
+        System.out.println(getName() + " lance un COUP CRITIQUE de " + damage + " dégâts !");
     }
 }
