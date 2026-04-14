@@ -1,6 +1,6 @@
 public class Enemy extends Entity {
     public Enemy(String name, int hp, int attack, int defence) {
-        super("Goblin", 100,
+        super(name, 100,
                 10,
                 defence);
     }

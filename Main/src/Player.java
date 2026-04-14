@@ -6,9 +6,8 @@ public class Player extends Entity {
     }
 
     public void act(Enemy target, Scanner scanner) {
-        System.out.print("Bonjour dans l'aventure veuillez choisir votre nom: ");
-        setName(scanner.next());
-
+        System.out.println("\n--- Votre tour ---");
+        System.out.println("Vos HP : " + this.hp + " | HP ennemi : " + target.getHp());
         System.out.println("""
                 Que voulez-vous faire ?.
                 1. Attaquer
@@ -28,7 +27,7 @@ public class Player extends Entity {
                 if(this.hp  >= 100) {
                     System.out.println("Vous ne pouvez pas depasser le montant maximum de vie.");
                 }else {
-                    this.hp += 15;
+                    this.hp += Math.min(this.hp + 15, 100);
                     System.out.println(getName() + " prend une potion de vie (+15 HP)");
                 }
             }
@@ -45,6 +44,10 @@ public class Player extends Entity {
     }
 
     private void specialAttack(Enemy target) {
+        if (target.getHp() >= 20) {
+            System.out.println("L'attaque spéciale n'est pas disponible (HP ennemi doit être  inferieur a 20)");
+            return;
+        }
         int damage = this.attack * 2;
         target.setHp(target.getHp() - damage);
         System.out.println(getName() + " lance un COUP CRITIQUE de " + damage + " dégâts !");
