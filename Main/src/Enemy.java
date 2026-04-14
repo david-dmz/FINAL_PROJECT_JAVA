@@ -1,23 +1,23 @@
 public class Enemy extends Entity {
     public Enemy(String name, int hp, int attack, int defence) {
-        super("Goblin", hp,
-                attack,
+        super("Goblin", 100,
+                10,
                 defence);
     }
 
     public void act(Player target) {
-        double action = Math.random();
-        if (this.hp <= 20 && action < 0.5) { // chance de se regener
+        double randomSeed = Math.random();
+        if (this.hp <= 20 && randomSeed < 0.5) { // chance de se regener
             this.hp += 15;
             System.out.println(getName() + "prend une possion de vie");
             return;
         }
 
-        if (target.getHp() <= 20 && action < 0.3) { // attaque speciale si le joueur a moins de 20 HP
+        if (target.getHp() <= 20 && randomSeed < 0.3) { // attaque speciale si le joueur a moins de 20 HP
             specialAttack(target);
             return;
         }
-        if (action < 0.7) {
+        if (randomSeed < 0.7) {
             attackPlayer(target);
 
         } else {

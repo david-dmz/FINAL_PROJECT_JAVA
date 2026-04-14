@@ -29,6 +29,7 @@ abstract class Entity {
     }
 
     // Setters
+    protected void setName(String name) {}
     protected void setHp(int hp) {
         this.hp = hp;
     }
