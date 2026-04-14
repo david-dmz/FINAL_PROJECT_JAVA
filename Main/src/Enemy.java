@@ -21,7 +21,7 @@ public class Enemy extends Entity {
             attackPlayer(target);
 
         } else {
-            System.out.println(getName() + "bloque les attaques");
+            System.out.println(getName() + " bloque les attaques");
         }
     }
 

@@ -27,7 +27,7 @@ public class Player extends Entity {
                 if(this.hp  >= 100) {
                     System.out.println("Vous ne pouvez pas depasser le montant maximum de vie.");
                 }else {
-                    this.hp += Math.min(this.hp + 15, 100);
+                    this.hp += 15;
                     System.out.println(getName() + " prend une potion de vie (+15 HP)");
                 }
             }
