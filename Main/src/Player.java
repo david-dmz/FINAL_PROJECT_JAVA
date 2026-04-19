@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class Player extends Entity {
     private boolean isBlocking = false;
-    private int xp      = 0;
-    private int level   = 1;
+    private int xp = 100;
+    private int level = 1;
     private int xpToNext = 100; // XP nécessaire pour level up
+    private PlayerClass playerClass = null;
 
     public Player(String name, int hp, int attack, int defence) {
         super(name, hp, attack, defence);
     }
 
-    /** Appelé après chaque ennemi vaincu */
     public void gainXp(int amount) {
         xp += amount;
         System.out.println(ConsoleUi.YELLOW + "+ " + amount + " XP !" + ConsoleUi.RESET);
@@ -19,7 +19,7 @@ public class Player extends Entity {
             xp -= xpToNext;
             level++;
             xpToNext = (int) (xpToNext * 1.5);
-            this.attack  += 2;
+            this.attack += 2;
             this.defence += 1;
             this.hp = this.maxHp; // soin complet au level up
             ConsoleUi.printLevelUp(level);
@@ -27,9 +27,30 @@ public class Player extends Entity {
         }
     }
 
-    public int getLevel() { return level; }
-    public int getXp()    { return xp; }
-    public int getXpToNext() { return xpToNext; }
+    public void applyClass(PlayerClass chosen) {
+        this.playerClass = chosen;
+        this.attack += chosen.bonusAtk;
+        this.defence += chosen.bonusDef;
+        System.out.println(ConsoleUi.CYAN + ConsoleUi.BOLD + "Vous devenez un " + chosen.label + "!" + ConsoleUi.RESET);
+        System.out.println("  ATK → " + this.attack + " | DEF → " + this.defence);
+    }
+
+    //Getters
+    public int getLevel() {
+        return level;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public int getXpToNext() {
+        return xpToNext;
+    }
+
+    public PlayerClass getPlayerClass() {
+        return playerClass;
+    }
 
     public void act(Enemy target, Scanner scanner) {
         ConsoleUi.printBattleHeader(this, target);
@@ -78,16 +99,24 @@ public class Player extends Entity {
     }
 
     private void specialAttack(Enemy target) {
-        if (target.getHp() >= 20) {
+        int threshold = (playerClass == PlayerClass.MAGE) ? 40 : 20;
+
+        if (target.getHp() >= threshold) {
             System.out.println(ConsoleUi.YELLOW
-                    + "Attaque spéciale indisponible (HP ennemi >= 20)" + ConsoleUi.RESET);
+                    + "Attaque spéciale indisponible (HP ennemi >= " + threshold + ")"
+                    + ConsoleUi.RESET);
             return;
         }
-        int damage = this.attack * 2;
+        int damage = (playerClass == PlayerClass.TANK)
+                ? this.attack * 3
+                : this.attack * 2;;
+
         target.setHp(target.getHp() - damage);
-        System.out.println(ConsoleUi.RED + getName()
-                + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
+        System.out.println(ConsoleUi.RED + ConsoleUi.BOLD
+                + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
     }
 
-    public boolean isBlocking() { return isBlocking; }
+    public boolean isBlocking() {
+        return isBlocking;
+    }
 }

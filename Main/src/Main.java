@@ -31,6 +31,10 @@ void main() {
                 + " est vaincu !" + ConsoleUi.RESET);
         player.gainXp(enemy.getXpReward());
 
+        if (player.getLevel() == 2 && player.getPlayerClass() == null) {
+            PlayerClass chosen = ConsoleUi.chooseClass(sc);
+            player.applyClass(chosen);
+        }
         //Soin entre les combats
         int heal = 20;
         player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
