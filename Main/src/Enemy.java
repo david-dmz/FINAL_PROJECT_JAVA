@@ -22,11 +22,17 @@ public class Enemy extends Entity {
 
         } else {
             System.out.println(getName() + " bloque les attaques");
+
         }
     }
 
     private void attackPlayer(Player target) {
         int damage = this.attack - target.getDefence();
+
+        if(target.isBlocking()){
+            damage /= 2;
+            System.out.println("L'attaque n'est pas aussi effectif");
+        }
         if (damage < 0) damage = 0;
 
         target.setHp(target.getHp() - damage);

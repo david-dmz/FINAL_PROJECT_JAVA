@@ -1,8 +1,11 @@
 import java.util.Scanner;
 
 public class Player extends Entity {
+    private boolean isBlocking = false;
+
     public Player(String name, int hp, int attack, int defence) {
         super(name, hp, attack, defence);
+        this.isBlocking = false;
     }
 
     public void act(Enemy target, Scanner scanner) {
@@ -22,11 +25,14 @@ public class Player extends Entity {
         switch (choice) {
             case 1 -> attackEnemy(target);
             case 2 -> specialAttack(target);
-            case 3 -> System.out.println(getName() + " bloque les attaques !");
+            case 3 -> {
+                System.out.println(getName() + " bloque les attaques !");
+                isBlocking = true;
+            }
             case 4 -> {
-                if(this.hp  >= 100) {
+                if (this.hp >= 100) {
                     System.out.println("Vous ne pouvez pas depasser le montant maximum de vie.");
-                }else {
+                } else {
                     this.hp += 15;
                     System.out.println(getName() + " prend une potion de vie (+15 HP)");
                 }
@@ -56,5 +62,8 @@ public class Player extends Entity {
         int damage = this.attack * 2;
         target.setHp(target.getHp() - damage);
         System.out.println(getName() + " lance un COUP CRITIQUE de " + damage + " dégâts !");
+    }
+    protected boolean isBlocking() {
+        return isBlocking;
     }
 }
