@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Player extends Entity {
     private boolean isBlocking = false;
-    private int xp = 100;
+    private int xp = 0;
     private int level = 1;
-    private int xpToNext = 100; // XP nécessaire pour level up
+    private int xpToNext = 80; // XP nécessaire pour level up
     private PlayerClass playerClass = null;
 
     public Player(String name, int hp, int attack, int defence) {
