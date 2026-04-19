@@ -31,6 +31,11 @@ public class Player extends Entity {
                     System.out.println(getName() + " prend une potion de vie (+15 HP)");
                 }
             }
+            case 5 -> {
+                System.out.println("Merci d'avoir joué");
+                System.out.println("Fermeture du jeu.");
+                System.exit(0);
+            }
             default -> System.out.println("Choix invalide, vous passez votre tour.");
         }
     }
