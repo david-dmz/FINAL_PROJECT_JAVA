@@ -2,28 +2,41 @@ import java.util.Scanner;
 
 void main() {
     Scanner sc = new Scanner(System.in);
+    ConsoleUi.printTitle();
 
-    System.out.print("Bienvenue dans l'aventure. Entrez votre nom: ");
+    System.out.print("Entrez votre nom : ");
     String name = sc.nextLine();
 
     Player player = new Player(name, 100, 10, 5);
-    Enemy enemy = new Enemy("Goblin", 100, 10, 5);
+    Enemy[] enemies = Enemy.createWave();
 
-    while (player.getHp() > 0) {
-        player.act(enemy, sc);
+    for (Enemy enemy : enemies) {
+        System.out.println(ConsoleUi.BOLD + ConsoleUi.CYAN
+                + "\n⚔  Un " + enemy.getName() + " apparaît !"
+                + ConsoleUi.RESET);
 
-        if (enemy.getHp() <= 0) break; // l'ennemi est mort, pas besoin qu'il joue
+        while (player.getHp() > 0 && enemy.getHp() > 0) {
+            player.act(enemy, sc);
+            if (enemy.getHp() <= 0) break;
+            enemy.act(player);
+        }
 
-        enemy.act(player);
+        if (player.getHp() <= 0) {
+            ConsoleUi.printGameOver(player.getName());
+            sc.close();
+            return;
+        }
+
+        System.out.println(ConsoleUi.GREEN + enemy.getName()
+                + " est vaincu !" + ConsoleUi.RESET);
+        player.gainXp(enemy.getXpReward());
+
+        //Soin entre les combats
+        int heal = 20;
+        player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
+        System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
     }
 
-    if (player.getHp() <= 0) {
-        System.out.println(player.getName() + " est mort... Game Over !");
-    } else {
-        System.out.println(player.getName() + " a vaincu " + enemy.getName() + " ! Victoire !");
-    }
-
+    ConsoleUi.printVictory(player.getName());
     sc.close();
 }
-
-
