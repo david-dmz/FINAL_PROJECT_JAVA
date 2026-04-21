@@ -36,22 +36,6 @@ public class Player extends Entity {
         System.out.println("  ATK → " + this.attack + " | DEF → " + this.defence);
     }
 
-    //Getters
-    public int getLevel() {
-        return level;
-    }
-
-    public int getXp() {
-        return xp;
-    }
-
-    public int getXpToNext() {
-        return xpToNext;
-    }
-
-    public PlayerClass getPlayerClass() {
-        return playerClass;
-    }
 
     public void act(Enemy target, Scanner scanner) {
         boolean actionValide = false;
@@ -64,7 +48,7 @@ public class Player extends Entity {
 
             if (!scanner.hasNextInt()) {
                 System.out.println(ConsoleUi.RED + "Veuillez entrer un nombre !" + ConsoleUi.RESET);
-                scanner.next(); // Évite la boucle infinie si l'utilisateur tape du texte
+                scanner.next();
                 continue;
             }
 
@@ -72,13 +56,17 @@ public class Player extends Entity {
             isBlocking = false; // reset le blocage à chaque tour
 
             switch (choice) {
-                case 1 -> attackEnemy(target);
-                case 2 -> specialAttack(target);
+                case 1 -> {
+                    attackEnemy(target);
+                    actionValide = true;
+                }
+                case 2 -> actionValide = specialAttack(target);
                 case 3 -> {
                     defend();
+                    actionValide = true;
                 }
                 case 4 -> {
-                    usePotion();
+                    actionValide = usePotion();
                 }
                 case 5 -> {
                     System.out.println(getName() + " prend la fuite...");
@@ -107,18 +95,18 @@ public class Player extends Entity {
         System.out.println(ConsoleUi.RED + getName() + " inflige " + damage + " dégâts à " + target.getName() + " !" + ConsoleUi.RESET);
     }
 
-    private void specialAttack(Enemy target) {
+    private boolean specialAttack(Enemy target) {
         int threshold = (playerClass == PlayerClass.MAGE) ? 40 : 20;
 
         if (target.getHp() >= threshold) {
             System.out.println(ConsoleUi.YELLOW + "Attaque spéciale indisponible (HP ennemi >= " + threshold + ")" + ConsoleUi.RESET);
-            return;
+            return false;
         }
         int damage = (playerClass == PlayerClass.TANK) ? this.attack * 3 : this.attack * 2;
-        ;
 
         target.setHp(target.getHp() - damage);
         System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
+        return true;
     }
 
     private boolean usePotion() {
@@ -127,7 +115,7 @@ public class Player extends Entity {
             return false;
         }
         if (this.hp >= this.maxHp) {
-            System.out.println("Vie déjà pleine !");
+            System.out.println( ConsoleUi.YELLOW + "Vie déjà pleine !" + ConsoleUi.RESET);
             return false;
 
         }
@@ -145,4 +133,22 @@ public class Player extends Entity {
     public boolean isBlocking() {
         return isBlocking;
     }
+
+    //Getters
+    public int getLevel() {
+        return level;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public int getXpToNext() {
+        return xpToNext;
+    }
+
+    public PlayerClass getPlayerClass() {
+        return playerClass;
+    }
+
 }
