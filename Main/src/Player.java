@@ -4,7 +4,8 @@ public class Player extends Entity {
     private boolean isBlocking = false;
     private int xp = 0;
     private int level = 1;
-    private int xpToNext = 80; // XP nécessaire pour level up
+    private int xpToNext = 80;// XP nécessaire pour level up
+    private int potions = 3;
     private PlayerClass playerClass = null;
 
     public Player(String name, int hp, int attack, int defence) {
@@ -53,67 +54,92 @@ public class Player extends Entity {
     }
 
     public void act(Enemy target, Scanner scanner) {
-        ConsoleUi.printBattleHeader(this, target);
-        System.out.println(ConsoleUi.CYAN + "Niveau " + level
-                + " | XP : " + xp + "/" + xpToNext + ConsoleUi.RESET);
-        System.out.println("""
-                Que voulez-vous faire ?
-                1. Attaquer
-                2. Attaque spéciale (ennemi < 20 HP)
-                3. Bloquer
-                4. Potion de vie (+15 HP)
-                5. Quitter
-                """);
+        boolean actionValide = false;
 
-        int choice = scanner.nextInt();
-        isBlocking = false; // reset le blocage à chaque tour
+        while (!actionValide) {
+            ConsoleUi.printBattleHeader(this, target);
+            System.out.println(ConsoleUi.CYAN + "Niveau " + level + " | XP : " + xp + "/" + xpToNext + ConsoleUi.RESET);
 
-        switch (choice) {
-            case 1 -> attackEnemy(target);
-            case 2 -> specialAttack(target);
-            case 3 -> {
-                System.out.println(getName() + " se met en garde !");
-                isBlocking = true;
+            printMenu();
+
+            if (!scanner.hasNextInt()) {
+                System.out.println(ConsoleUi.RED + "Veuillez entrer un nombre !" + ConsoleUi.RESET);
+                scanner.next(); // Évite la boucle infinie si l'utilisateur tape du texte
+                continue;
             }
-            case 4 -> {
-                if (this.hp >= this.maxHp) {
-                    System.out.println("Vous êtes déjà au maximum !");
-                } else {
-                    this.hp = Math.min(this.hp + 15, this.maxHp);
-                    System.out.println(getName() + " boit une potion (+15 HP)");
+
+            int choice = scanner.nextInt();
+            isBlocking = false; // reset le blocage à chaque tour
+
+            switch (choice) {
+                case 1 -> attackEnemy(target);
+                case 2 -> specialAttack(target);
+                case 3 -> {
+                    defend();
                 }
+                case 4 -> {
+                    usePotion();
+                }
+                case 5 -> {
+                    System.out.println(getName() + " prend la fuite...");
+                    System.exit(0);
+                }
+                default -> System.out.println(ConsoleUi.RED + "Choix invalide." + ConsoleUi.RESET);
             }
-            case 5 -> {
-                System.out.println("À bientôt !");
-                System.exit(0);
-            }
-            default -> System.out.println(ConsoleUi.RED + "Choix invalide." + ConsoleUi.RESET);
         }
+
+    }
+
+    private void printMenu() {
+        String specLabel = (playerClass == PlayerClass.MAGE) ? "Explosion (Ennemi < 40 HP)" : "Coup de grâce (Ennemi < 20 HP)";
+        System.out.println("""
+                1. Attaquer
+                2. %s
+                3. Bloquer (Réduit les prochains dégâts)
+                4. Potion (+15 HP)
+                5. Quitter
+                """.formatted(specLabel));
     }
 
     private void attackEnemy(Enemy target) {
-        int damage = Math.max(0, this.attack - target.getDefence());
+        int damage = Math.max(1, this.attack - target.getDefence());
         target.setHp(target.getHp() - damage);
-        System.out.println(ConsoleUi.RED + getName() + " inflige " + damage
-                + " dégâts à " + target.getName() + " !" + ConsoleUi.RESET);
+        System.out.println(ConsoleUi.RED + getName() + " inflige " + damage + " dégâts à " + target.getName() + " !" + ConsoleUi.RESET);
     }
 
     private void specialAttack(Enemy target) {
         int threshold = (playerClass == PlayerClass.MAGE) ? 40 : 20;
 
         if (target.getHp() >= threshold) {
-            System.out.println(ConsoleUi.YELLOW
-                    + "Attaque spéciale indisponible (HP ennemi >= " + threshold + ")"
-                    + ConsoleUi.RESET);
+            System.out.println(ConsoleUi.YELLOW + "Attaque spéciale indisponible (HP ennemi >= " + threshold + ")" + ConsoleUi.RESET);
             return;
         }
-        int damage = (playerClass == PlayerClass.TANK)
-                ? this.attack * 3
-                : this.attack * 2;;
+        int damage = (playerClass == PlayerClass.TANK) ? this.attack * 3 : this.attack * 2;
+        ;
 
         target.setHp(target.getHp() - damage);
-        System.out.println(ConsoleUi.RED + ConsoleUi.BOLD
-                + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
+        System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
+    }
+
+    private boolean usePotion() {
+        if (potions <= 0) {
+            System.out.println(ConsoleUi.RED + "Plus de potions !" + ConsoleUi.RESET);
+            return false;
+        }
+        if (this.hp >= this.maxHp) {
+            System.out.println("Vie déjà pleine !");
+            return false;
+
+        }
+        this.hp = Math.min(this.hp + 15, this.maxHp);
+        this.potions--;
+        System.out.println(ConsoleUi.GREEN + " +15 HP ! (Restantes : " + potions + ")" + ConsoleUi.RESET);
+        return true;
+    }
+
+    private void defend() {
+        System.out.println(ConsoleUi.BLUE + getName() + " se prépare à encaisser !" + ConsoleUi.RESET);
+        this.isBlocking = true;
     }
 
     public boolean isBlocking() {

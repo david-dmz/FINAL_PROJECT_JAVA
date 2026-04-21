@@ -8,6 +8,7 @@ public class ConsoleUi {
     public static final String YELLOW = "\u001B[33m";
     public static final String CYAN = "\u001B[36m";
     public static final String BOLD = "\u001B[1m";
+    public static final String BLUE = "\u001B[34m";
 
     public static void printTitle() {
         System.out.println(CYAN + BOLD + """
