@@ -23,7 +23,13 @@ public class Player extends Entity {
             this.attack += 2;
             this.defence += 1;
             this.hp = this.maxHp; // soin complet au level up
+
             ConsoleUi.printLevelUp(level);
+
+            if(level == 3){
+                this.potions += 1;
+                System.out.println(ConsoleUi.GREEN + "  BONUS : Stock de potions augmenté ! (+1)" + ConsoleUi.RESET);
+            }
             System.out.println("  ATK +" + 2 + " | DEF +" + 1 + " | HP restaurés");
         }
     }
@@ -151,4 +157,10 @@ public class Player extends Entity {
         return playerClass;
     }
 
+    public void receivePotion(){
+        this.potions++;
+    }
+public int getPotions(){
+        return potions;
+}
 }

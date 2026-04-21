@@ -57,7 +57,13 @@ public class Enemy extends Entity {
     public boolean isBlocking() {
         return isBlocking;
     }
-
+public void dropLoot(Player player){
+        if(Math.random() < 0.2 && (player.getPotions() < 4 )){
+            player.receivePotion();
+            System.out.println(ConsoleUi.GREEN + getName() + " a laissé tomber une potion ! " +
+                    "(Potions: " + player.getPotions() + ")" + ConsoleUi.RESET);
+        }
+}
     public static Enemy[] createWave() {
         return new Enemy[]{
                 new Enemy("Squelette", 30, 6, 1, 30),

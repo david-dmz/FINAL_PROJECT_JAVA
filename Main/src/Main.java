@@ -26,21 +26,25 @@ void main() {
             sc.close();
             return;
         }
+        if (enemy.getHp() <= 0) {
+            System.out.println(ConsoleUi.GREEN + enemy.getName()
+                    + " est vaincu !" + ConsoleUi.RESET);
+            player.gainXp(enemy.getXpReward());
 
-        System.out.println(ConsoleUi.GREEN + enemy.getName()
-                + " est vaincu !" + ConsoleUi.RESET);
-        player.gainXp(enemy.getXpReward());
+            enemy.dropLoot(player); // Tentative de drop de potion
 
-        if (player.getLevel() >= 2 && player.getPlayerClass() == null) {
-            PlayerClass chosen = ConsoleUi.chooseClass(sc);
-            player.applyClass(chosen);
+            if (player.getLevel() >= 2 && player.getPlayerClass() == null) {
+                PlayerClass chosen = ConsoleUi.chooseClass(sc);
+                player.applyClass(chosen);
+            }
+            //Soin entre les combats
+            if (enemy != enemies[enemies.length - 1]) {
+                int heal = 20;
+                player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
+                System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
+            }
         }
-        //Soin entre les combats
-        if (enemy != enemies[enemies.length - 1]) {
-            int heal = 20;
-            player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
-            System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
-        }
+
     }
 
     ConsoleUi.printVictory(player.getName());
