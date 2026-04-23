@@ -44,7 +44,6 @@ void main() {
                 System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
             }
         }
-
     }
 
     ConsoleUi.printVictory(player.getName());

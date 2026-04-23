@@ -72,8 +72,7 @@ public void dropLoot(Player player){
                 new Enemy("Orc", 80, 13, 5, 80),
                 new Enemy("Dragon", 120, 18, 8, 150),
                 new Enemy ("Dark Mage", 200, 25, 15, 300),
-                new Enemy ("Son of the Darkness", 500, 50, 30, 1000),
+                new Enemy ("Son of the Darkness", 500, 50, 30, 1000)
         };
-
     }
 }

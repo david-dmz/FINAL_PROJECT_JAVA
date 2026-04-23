@@ -12,18 +12,18 @@ public class ConsoleUi {
 
     public static void printTitle() {
         System.out.println(CYAN + BOLD + """
-                ╔═══════════════════════════════════╗
-                ║        ⚔  JAVA QUEST  ⚔           ║
-                ╚═══════════════════════════════════╝
+                ╔════════════════════════════════╗
+                ║        ⚔  JAVA QUEST  ⚔        ║  
+                ╚════════════════════════════════╝
                 """ + RESET);
     }
 
     public static void printHpBar(String name, int hp, int maxHp) {
         int barLength = 20;
         int filled = (int) ((double) hp / maxHp * barLength);
-        // pour Java 21 et -
-        //filled = Math.max(0, Math.min(filled, barLength));
-        // pour Java 21 et +
+        /*pour Java 21 et -
+        filled = Math.max(0, Math.min(filled, barLength));
+         pour Java 21 et + */
         filled = Math.clamp(filled, 0, barLength);
 
         String color = hp > maxHp * 0.5 ? GREEN : hp > maxHp * 0.2 ? YELLOW : RED;
@@ -42,7 +42,7 @@ public class ConsoleUi {
     public static void printLevelUp(int newLevel) {
         System.out.println(YELLOW + BOLD + """
                 ╔══════════════════════╗
-                ║   ⭐ LEVEL UP ! ⭐   ║
+                ║ ⭐⭐ LEVEL UP! ⭐⭐ ║
                 ╚══════════════════════╝
                 """ + "   → Niveau " + newLevel + RESET);
     }
@@ -50,7 +50,7 @@ public class ConsoleUi {
     public static void printVictory(String playerName) {
         System.out.println(GREEN + BOLD + """
                 ╔══════════════════════════╗
-                ║   🏆  VICTOIRE !  🏆    ║
+                ║  🏆🏆  VICTOIRE !  🏆🏆 ║
                 ╚══════════════════════════╝
                 """ + "   " + playerName + " a gagné !" + RESET);
     }
@@ -58,7 +58,7 @@ public class ConsoleUi {
     public static void printGameOver(String playerName) {
         System.out.println(RED + BOLD + """
                 ╔══════════════════════════╗
-                ║      💀 GAME OVER 💀     ║
+                ║   💀💀 GAME OVER 💀 💀  ║
                 ╚══════════════════════════╝
                 """ + "   " + playerName + " est mort..." + RESET);
     }
@@ -66,7 +66,7 @@ public class ConsoleUi {
     public static PlayerClass chooseClass(Scanner sc) {
         System.out.println(CYAN + BOLD + """
                 ╔══════════════════════════════════════╗
-                ║       ⭐ CHOIX DE CLASSE ⭐           ║
+                ║      ⭐⭐ CHOIX DE CLASSE ⭐⭐      ║
                 ╚══════════════════════════════════════╝
                 """ + RESET);
 

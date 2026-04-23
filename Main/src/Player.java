@@ -22,16 +22,16 @@ public class Player extends Entity {
             xpToNext = (int) (xpToNext * 1.5);
             this.attack += 2;
             this.defence += 1;
+            this.maxHp += 15;
             this.hp = this.maxHp; // soin complet au level up
 
             ConsoleUi.printLevelUp(level);
 
-            if(level == 3){
+            if (level == 3) {
                 this.potions += 1;
                 System.out.println(ConsoleUi.GREEN + "  BONUS : Stock de potions augmenté ! (+1)" + ConsoleUi.RESET);
             }
-            System.out.println("  ATK +" + 2 + " | DEF +" + 1 + " | HP restaurés");
-        }
+            System.out.println("  ATK +2 | DEF +1 | HP MAX +15 | HP restaurés");        }
     }
 
     public void applyClass(PlayerClass chosen) {
@@ -121,7 +121,7 @@ public class Player extends Entity {
             return false;
         }
         if (this.hp >= this.maxHp) {
-            System.out.println( ConsoleUi.YELLOW + "Vie déjà pleine !" + ConsoleUi.RESET);
+            System.out.println(ConsoleUi.YELLOW + "Vie déjà pleine !" + ConsoleUi.RESET);
             return false;
 
         }
@@ -157,10 +157,11 @@ public class Player extends Entity {
         return playerClass;
     }
 
-    public void receivePotion(){
+    public void receivePotion() {
         this.potions++;
     }
-public int getPotions(){
+
+    public int getPotions() {
         return potions;
-}
+    }
 }
