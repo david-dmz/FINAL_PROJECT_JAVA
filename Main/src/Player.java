@@ -20,9 +20,12 @@ public class Player extends Entity {
             xp -= xpToNext;
             level++;
             xpToNext = (int) (xpToNext * 1.5);
+
+            // augmentation de stats apres lvl up
             this.attack += 2;
             this.defence += 1;
             this.maxHp += 15;
+
             this.hp = this.maxHp; // soin complet au level up
 
             ConsoleUi.printLevelUp(level);
@@ -31,15 +34,20 @@ public class Player extends Entity {
                 this.potions += 1;
                 System.out.println(ConsoleUi.GREEN + "  BONUS : Stock de potions augmenté ! (+1)" + ConsoleUi.RESET);
             }
-            System.out.println("  ATK +2 | DEF +1 | HP MAX +15 | HP restaurés");        }
+            System.out.println("  ATK +2 | DEF +1 | HP MAX +15 | HP restaurés");
+        }
     }
 
     public void applyClass(PlayerClass chosen) {
         this.playerClass = chosen;
         this.attack += chosen.bonusAtk;
         this.defence += chosen.bonusDef;
+
+        int displayAttack = (int) (this.attack * chosen.multAtk);
+        int displayDefence = (int) (this.defence * chosen.multDef);
+
         System.out.println(ConsoleUi.CYAN + ConsoleUi.BOLD + "Vous devenez un " + chosen.label + "!" + ConsoleUi.RESET);
-        System.out.println("  ATK → " + this.attack + " | DEF → " + this.defence);
+        System.out.println("  ATK effective → " + displayAttack + " | DEF effective → " + displayDefence);
     }
 
 
@@ -96,7 +104,10 @@ public class Player extends Entity {
     }
 
     private void attackEnemy(Enemy target) {
-        int damage = Math.max(1, this.attack - target.getDefence());
+        double mult = (playerClass != null) ? playerClass.multAtk : 1.0;
+        int actualAttack = (int) (this.attack * mult);
+
+        int damage = Math.max(1, actualAttack - target.getDefence());
         target.setHp(target.getHp() - damage);
         System.out.println(ConsoleUi.RED + getName() + " inflige " + damage + " dégâts à " + target.getName() + " !" + ConsoleUi.RESET);
     }
@@ -108,7 +119,8 @@ public class Player extends Entity {
             System.out.println(ConsoleUi.YELLOW + "Attaque spéciale indisponible (HP ennemi >= " + threshold + ")" + ConsoleUi.RESET);
             return false;
         }
-        int damage = (playerClass == PlayerClass.TANK) ? this.attack * 3 : this.attack * 2;
+        double mult = (playerClass != null) ? playerClass.multAtk : 1.0;
+        int damage = (int) (this.attack * mult * 2);
 
         target.setHp(target.getHp() - damage);
         System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
@@ -134,6 +146,12 @@ public class Player extends Entity {
     private void defend() {
         System.out.println(ConsoleUi.BLUE + getName() + " se prépare à encaisser !" + ConsoleUi.RESET);
         this.isBlocking = true;
+    }
+
+    @Override
+    public int getDefence() {
+        double mult = (playerClass != null) ? playerClass.multDef : 1.0;
+        return (int) (this.defence * mult);
     }
 
     public boolean isBlocking() {
