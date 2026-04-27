@@ -30,6 +30,7 @@ void main() {
             System.out.println(ConsoleUi.GREEN + enemy.getName()
                     + " est vaincu !" + ConsoleUi.RESET);
             player.gainXp(enemy.getXpReward());
+            player.addGold(enemy.getGold());
 
             enemy.dropLoot(player); // Tentative de drop de potion
 
@@ -39,6 +40,7 @@ void main() {
             }
             //Soin entre les combats
             if (enemy != enemies[enemies.length - 1]) {
+                EventSystem.triggerRandomEvent(player, sc);
                 int heal = 20;
                 player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
                 System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
