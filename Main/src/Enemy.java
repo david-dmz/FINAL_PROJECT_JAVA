@@ -2,8 +2,8 @@ public class Enemy extends Entity {
     private int xpReward;
     private boolean isBlocking = false;
 
-    public Enemy(String name, int hp, int attack, int defence, int xpReward) {
-        super(name, hp, attack, defence);
+    public Enemy(String name, int hp, int attack, int defence, int xpReward, int goldReward) {
+        super(name, hp, attack, defence, goldReward);
         this.xpReward = xpReward;
     }
 
@@ -66,13 +66,13 @@ public void dropLoot(Player player){
 }
     public static Enemy[] createWave() {
         return new Enemy[]{
-                new Enemy("Squelette", 30, 6, 1, 30),
-                new Enemy("Gobelin", 40, 8, 2, 50),
-                new Enemy("Squelette", 300, 1, 3, 120), // troll enemy
-                new Enemy("Orc", 80, 15, 5, 80),
-                new Enemy("Dragon", 120, 25, 8, 150),
-                new Enemy ("Dark Mage", 200, 35, 15, 200),
-                new Enemy ("Son of the Darkness", 500, 50, 30, 400)
+                new Enemy("Squelette", 30, 6, 1, 30,10),
+                new Enemy("Gobelin", 40, 8, 2, 50,20),
+                new Enemy("Squelette", 300, 1, 3, 120,100), // troll enemy
+                new Enemy("Orc", 80, 15, 5, 80,60),
+                new Enemy("Dragon", 120, 25, 8, 150,100),
+                new Enemy ("Dark Mage", 200, 35, 15, 200,250),
+                new Enemy ("Son of the Darkness", 500, 50, 30, 400,500)
         };
     }
 }

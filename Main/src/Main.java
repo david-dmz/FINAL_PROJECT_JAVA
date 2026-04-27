@@ -48,4 +48,6 @@ void main() {
 
     ConsoleUi.printVictory(player.getName());
     sc.close();
+
+
 }

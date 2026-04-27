@@ -7,9 +7,10 @@ public class Player extends Entity {
     private int xpToNext = 80;// XP nécessaire pour level up
     private int potions = 3;
     private PlayerClass playerClass = null;
+    private int gold = 0;
 
     public Player(String name, int hp, int attack, int defence) {
-        super(name, hp, attack, defence);
+        super(name, hp, attack, defence, 0);
     }
 
     public void gainXp(int amount) {
@@ -127,6 +128,24 @@ public class Player extends Entity {
         return true;
     }
 
+    public void addGold(int amount) {
+        this.gold += amount;
+        System.out.println(ConsoleUi.YELLOW + "+ " + amount + " pièces d'or !" + ConsoleUi.RESET);
+    }
+
+    public boolean spendGold(int amount) {
+        if (this.gold >= amount) {
+            this.gold -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+
     private boolean usePotion() {
         if (potions <= 0) {
             System.out.println(ConsoleUi.RED + "Plus de potions !" + ConsoleUi.RESET);
@@ -135,7 +154,6 @@ public class Player extends Entity {
         if (this.hp >= this.maxHp) {
             System.out.println(ConsoleUi.YELLOW + "Vie déjà pleine !" + ConsoleUi.RESET);
             return false;
-
         }
         this.hp = Math.min(this.hp + 15, this.maxHp);
         this.potions--;
