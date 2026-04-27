@@ -40,10 +40,10 @@ void main() {
             }
             //Soin entre les combats
             if (enemy != enemies[enemies.length - 1]) {
-                EventSystem.triggerRandomEvent(player, sc);
                 int heal = 20;
                 player.setHp(Math.min(player.getHp() + heal, player.getMaxHp()));
                 System.out.println("Vous récupérez " + heal + " HP avant le prochain combat.\n");
+                EventSystem.triggerRandomEvent(player, sc);
             }
         }
     }
