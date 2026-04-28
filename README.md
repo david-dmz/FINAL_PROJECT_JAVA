@@ -6,11 +6,11 @@
 **JavaQuest** est un jeu de rôle (RPG) développé en Java, jouable directement dans la console. Le projet met en avant des mécaniques de combat tactique, une gestion de progression de personnage et des événements aléatoires dynamiques.
 ---
 ## Table des matières
-* [Fonctionnalités principales](#-Fonctionnalités-principales)
-* [Architecture Technique](#️-Architecture-technique)
-* [Comment jouer ?](#-Comment-jouer-)
-* [Road Map (À venir)](#️-Road-map-à-venir)
-* [Auteur](#-Auteur)
+* [Fonctionnalités principales](#fonctionnalités-principales)
+* [Architecture Technique](#️architecture-technique)
+* [Comment jouer ?](#comment-jouer-)
+* [Road Map (À venir)](#️road-map-à-venir)
+* [Auteur](#auteur)
 
 ---
 
