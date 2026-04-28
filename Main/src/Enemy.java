@@ -11,7 +11,7 @@ public class Enemy extends Entity {
         return new Enemy[]{
                 new Enemy("Squelette", 40, 14, 2, 30, 15),
                 new Enemy("Gobelin", 55, 18, 4, 55, 25),
-                new Enemy("Squelette Ancien", 350, 10, 3, 150, 150), // troll enemy
+                new Enemy("Squelette Ancien", 350, 1, 1, 150, 150), // troll enemy
                 new Enemy("Orc", 120, 25, 10, 100, 80),
                 new Enemy("Dragon", 200, 35, 15, 200, 150),
                 new Enemy("Dark Mage", 350, 50, 20, 400, 300),
