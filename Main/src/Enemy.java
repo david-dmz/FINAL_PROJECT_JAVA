@@ -9,18 +9,23 @@ public class Enemy extends Entity {
 
     public static Enemy[] createWave() {
         return new Enemy[]{
-                new Enemy("Squelette", 30, 8, 1, 30, 10),
-                new Enemy("Gobelin", 40, 12, 2, 50, 20),
-                new Enemy("Squelette", 300, 1, 3, 120, 100), // troll enemy
-                new Enemy("Orc", 80, 18, 5, 80, 60),
-                new Enemy("Dragon", 120, 28, 8, 150, 100),
-                new Enemy("Dark Mage", 200, 35, 15, 200, 250),
-                new Enemy("Son of the Darkness", 500, 50, 30, 400, 500)
+                new Enemy("Squelette", 40, 14, 2, 30, 15),
+                new Enemy("Gobelin", 55, 18, 4, 55, 25),
+                new Enemy("Squelette Ancien", 350, 10, 3, 150, 150), // troll enemy
+                new Enemy("Orc", 120, 25, 10, 100, 80),
+                new Enemy("Dragon", 200, 35, 15, 200, 150),
+                new Enemy("Dark Mage", 350, 50, 20, 400, 300),
+                new Enemy("Son of the Darkness", 800, 75, 40, 1000, 1000)
         };
     }
 
     public void act(Player target) {
         isBlocking = false;
+
+        if (this.name.equals("Squelette Ancien") && Math.random() < 0.10) {
+            trollCriticalHit(target);
+            return;
+        }
 
         // 1. Priorité Survie : Se soigne s'il est faible
         if (this.hp <= 20 && Math.random() < 0.5) {
@@ -40,6 +45,15 @@ public class Enemy extends Entity {
             System.out.println(getName() + " bloque les attaques");
             isBlocking = true;
         }
+    }
+
+    private void trollCriticalHit(Player target) {
+        int hugeDamage = 50;
+        target.setHp(target.getHp() - hugeDamage);
+
+        System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + "\n⚠️  INCROYABLE ! " + getName() +
+                " Le Squelette Ancien baille... puis vous met une gifle monumentale de " + hugeDamage + " dégâts !" +
+                ConsoleUi.RESET);
     }
 
     private void attackPlayer(Player target) {
