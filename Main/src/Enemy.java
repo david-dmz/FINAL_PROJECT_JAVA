@@ -7,6 +7,17 @@ public class Enemy extends Entity {
         this.xpReward = xpReward;
     }
 
+    public static Enemy[] createWave() {
+        return new Enemy[]{
+                new Enemy("Squelette", 30, 8, 1, 30, 10),
+                new Enemy("Gobelin", 40, 12, 2, 50, 20),
+                new Enemy("Squelette", 300, 1, 3, 120, 100), // troll enemy
+                new Enemy("Orc", 80, 18, 5, 80, 60),
+                new Enemy("Dragon", 120, 28, 8, 150, 100),
+                new Enemy("Dark Mage", 200, 35, 15, 200, 250),
+                new Enemy("Son of the Darkness", 500, 50, 30, 400, 500)
+        };
+    }
 
     public void act(Player target) {
         isBlocking = false;
@@ -32,7 +43,7 @@ public class Enemy extends Entity {
     }
 
     private void attackPlayer(Player target) {
-        int damage = this.attack - target.getDefence();
+        int damage = Math.max((int) (this.attack * 0.25), this.attack - target.getDefence());
 
         if (target.isBlocking()) {
             damage /= 2;
@@ -42,6 +53,8 @@ public class Enemy extends Entity {
         damage = Math.max(1, damage);
         target.setHp(target.getHp() - damage);
         System.out.println(getName() + " inflige " + damage + " dégâts à " + target.getName() + " !");
+
+
     }
 
     private void specialAttack(Player target) {
@@ -57,22 +70,12 @@ public class Enemy extends Entity {
     public boolean isBlocking() {
         return isBlocking;
     }
-public void dropLoot(Player player){
-        if(Math.random() < 0.2 && (player.getPotions() < 4 )){
+
+    public void dropLoot(Player player) {
+        if (Math.random() < 0.2 && (player.getPotions() < 4)) {
             player.receivePotion();
             System.out.println(ConsoleUi.GREEN + getName() + " a laissé tomber une potion ! " +
                     "(Potions: " + player.getPotions() + ")" + ConsoleUi.RESET);
         }
-}
-    public static Enemy[] createWave() {
-        return new Enemy[]{
-                new Enemy("Squelette", 30, 6, 1, 30,10),
-                new Enemy("Gobelin", 40, 8, 2, 50,20),
-                new Enemy("Squelette", 300, 1, 3, 120,100), // troll enemy
-                new Enemy("Orc", 80, 15, 5, 80,60),
-                new Enemy("Dragon", 120, 25, 8, 150,100),
-                new Enemy ("Dark Mage", 200, 35, 15, 200,250),
-                new Enemy ("Son of the Darkness", 500, 50, 30, 400,500)
-        };
     }
 }

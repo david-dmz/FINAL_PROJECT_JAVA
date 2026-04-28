@@ -28,7 +28,7 @@ public class EventSystem {
 
         int choice = getValidChoice(sc, 2);
         if (choice == 1) {
-            player.setHp(player.getHp() - 20);
+            player.setHp(player.getHp() - 30);
             player.setAttack(player.getAttack() + 5);
             System.out.println(ConsoleUi.RED + "L'autel brille ! Votre attaque augmente, mais vous vous sentez affaibli." + ConsoleUi.RESET);
             if (player.getHp() <= 0) player.setHp(1); // On évite une mort idiote sur un autel
