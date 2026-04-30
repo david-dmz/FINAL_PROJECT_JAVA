@@ -22,7 +22,7 @@ public class Enemy extends Entity {
     public void act(Player target) {
         isBlocking = false;
 
-        if (this.name.equals("Squelette Ancien") && Math.random() < 0.10) {
+        if (this.name.equals("Squelette Ancien") && Math.random() < 0.01) {
             trollCriticalHit(target);
             return;
         }
@@ -61,7 +61,7 @@ public class Enemy extends Entity {
 
         if (target.isBlocking()) {
             damage /= 2;
-            System.out.println("L'attaque n'est pas aussi effectif");
+            System.out.println("L'attaque n'est pas aussi efficace");
         }
 
         damage = Math.max(1, damage);

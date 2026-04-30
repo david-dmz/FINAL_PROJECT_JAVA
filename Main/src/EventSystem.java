@@ -22,7 +22,7 @@ public class EventSystem {
             Une voix résonne : 'Un sacrifice en échange de puissance ?'
             """ + ConsoleUi.RESET);
         System.out.println("""
-                1. Offrir du sang (-20 HP) pour gagner +5 ATK
+                1. Offrir du sang (-30 HP) pour gagner +5 ATK
                 2. Prier calmement (Rien ne se passe)
                 """);
 
