@@ -51,9 +51,11 @@ public class Enemy extends Entity {
         int hugeDamage = 50;
         target.setHp(target.getHp() - hugeDamage);
 
-        System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + "\n⚠️  INCROYABLE ! " + getName() +
-                " Le Squelette Ancien baille... puis vous met une gifle monumentale de " + hugeDamage + " dégâts !" +
-                ConsoleUi.RESET);
+        System.out.println(ConsoleUi.RED + "Le Squelette Ancien vous regarde fixement..." + ConsoleUi.RESET);
+        ConsoleUi.Sleep(1000); // Pause de 1 seconde
+        System.out.println("Il baille...");
+        ConsoleUi.Sleep(1500); // Pause de 1.5 seconde
+        System.out.println(ConsoleUi.BOLD + "Et vous met une gifle monumentale de" + hugeDamage + " dégâts !" + ConsoleUi.RESET);
     }
 
     private void attackPlayer(Player target) {

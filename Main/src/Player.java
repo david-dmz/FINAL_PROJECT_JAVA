@@ -111,6 +111,8 @@ public class Player extends Entity {
 
         int damage = Math.max(1, actualAttack - target.getDefence());
         target.setHp(target.getHp() - damage);
+        System.out.println("Vous lancez votre attaque...");
+        ConsoleUi.Sleep(500);
         System.out.println(ConsoleUi.RED + getName() + " inflige " + damage + " dégâts à " + target.getName() + " !" + ConsoleUi.RESET);
     }
 
@@ -125,6 +127,8 @@ public class Player extends Entity {
         int damage = (int) (this.attack * mult * 2);
 
         target.setHp(target.getHp() - damage);
+        System.out.println("Vous lancez votre attaque...");
+        ConsoleUi.Sleep(500);
         System.out.println(ConsoleUi.RED + ConsoleUi.BOLD + getName() + " COUP CRITIQUE — " + damage + " dégâts !" + ConsoleUi.RESET);
         return true;
     }

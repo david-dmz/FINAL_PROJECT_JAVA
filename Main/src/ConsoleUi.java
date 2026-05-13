@@ -86,4 +86,12 @@ public class ConsoleUi {
         }
         return classes[choice - 1];
     }
+
+    public static void Sleep(int milliseconds){
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 }
