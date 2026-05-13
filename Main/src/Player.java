@@ -55,12 +55,13 @@ public class Player extends Entity {
     public void act(Enemy target, Scanner scanner) {
         boolean actionValide = false;
 
+
+
         while (!actionValide) {
             ConsoleUi.printBattleHeader(this, target);
             System.out.println(ConsoleUi.CYAN + "Niveau " + level + " | XP : " + xp + "/" + xpToNext + ConsoleUi.RESET);
 
             printMenu();
-
             if (!scanner.hasNextInt()) {
                 System.out.println(ConsoleUi.RED + "Veuillez entrer un nombre !" + ConsoleUi.RESET);
                 scanner.next();

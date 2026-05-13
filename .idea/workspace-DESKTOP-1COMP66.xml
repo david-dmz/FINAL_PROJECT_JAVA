@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ca6e975-e33a-498d-9861-d4e08358b694" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Main/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Main/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Main/EventSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Main/EventSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Main/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Main/Player.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3Bx8E9heuuU2GBT1qUFlTXbtvPt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/David Martinez/OneDrive - Cégep Marie-Victorin/Session H26/420-210-MV-Prog OOP/ProjetFinal/FINAL_PROJECT_JAVA&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/marti/OneDrive - Cégep Marie-Victorin/Session H26/420-210-MV-Prog OOP/ProjetFinal/FINAL_PROJECT_JAVA/Main/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.JAVA&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ca6e975-e33a-498d-9861-d4e08358b694" name="Changes" comment="" />
+      <created>1775419247137</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775419247137</updated>
+      <workItem from="1775419248162" duration="15131000" />
+      <workItem from="1775832832034" duration="154000" />
+      <workItem from="1776086003472" duration="35000" />
+      <workItem from="1776186477126" duration="3804000" />
+      <workItem from="1776265309335" duration="270000" />
+      <workItem from="1776282524935" duration="1067000" />
+      <workItem from="1776559859035" duration="7455000" />
+      <workItem from="1776697462549" duration="3344000" />
+      <workItem from="1776771330475" duration="9982000" />
+      <workItem from="1776787394746" duration="1570000" />
+      <workItem from="1776790112715" duration="659000" />
+      <workItem from="1776797353995" duration="22000" />
+      <workItem from="1776882052982" duration="13000" />
+      <workItem from="1776888994043" duration="742000" />
+      <workItem from="1776941847532" duration="2662000" />
+      <workItem from="1776960966916" duration="1545000" />
+      <workItem from="1776967812853" duration="3702000" />
+      <workItem from="1777059630806" duration="3544000" />
+      <workItem from="1777320285563" duration="2014000" />
+      <workItem from="1777373207575" duration="2205000" />
+      <workItem from="1777376137415" duration="268000" />
+      <workItem from="1777377077700" duration="4118000" />
+      <workItem from="1777398094761" duration="637000" />
+      <workItem from="1777415925160" duration="315000" />
+      <workItem from="1777549443542" duration="2509000" />
+      <workItem from="1777646214487" duration="2144000" />
+      <workItem from="1777665060529" duration="99000" />
+      <workItem from="1777762810406" duration="1293000" />
+      <workItem from="1777915092802" duration="2303000" />
+      <workItem from="1778093886963" duration="141000" />
+      <workItem from="1778094048816" duration="168000" />
+      <workItem from="1778181761266" duration="1869000" />
+      <workItem from="1778373943388" duration="604000" />
+      <workItem from="1778543766186" duration="154000" />
+    </task>
+    <task id="LOCAL-00001">
+      <option name="closed" value="true" />
+      <created>1776944037196</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776944037196</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Main/src/Enemy.java</url>
+          <line>9</line>
+          <properties class="Enemy" method="createWave">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

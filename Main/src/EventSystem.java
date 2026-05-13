@@ -38,10 +38,24 @@ public class EventSystem {
     }
 
     private static void handleChest(Player player) {
-        System.out.println(ConsoleUi.YELLOW + " Vous trouvez un coffre poussiéreux !" + ConsoleUi.RESET);
-        if (Math.random() > 0.4) {
-            player.receivePotion();
+     System.out.println(ConsoleUi.YELLOW + " Vous trouvez un coffre poussiéreux !" + ConsoleUi.RESET);
+
+        double chance = Math.random();
+        if (chance < 0.01) {
+            player.setHp(player.getMaxHp() + 50); // augmentation max des PV
+            player.setHp(player.getHp() + 50);
+            System.out.println(ConsoleUi.GREEN + "La relique biomécanique des Anciens pulse d'une lueur bleutée et scanne votre corps... Votre constitution est renforcée ! (+50 PV)" + ConsoleUi.RESET);
+        } else if(chance < 0.1) {
+            player.setAttack(player.getAttack() + 5); // augmentation de ATK
+            System.out.println(ConsoleUi.BLUE + "Vous trouvez un module de plasma. Votre arme est plus tranchante ! (+5 Attaque)" + ConsoleUi.RESET);
+        }
+        else if (chance< 0.6) {
+            player.receivePotion(); // recevoir une potion
             System.out.println("Incroyable ! Vous trouvez une " + ConsoleUi.GREEN + "Potion" + ConsoleUi.RESET + ".");
+        } else if (chance < 0.85) {
+            player.addGold(25); // recevoir de l'argent
+            System.out.println("Vous trouvez une poignée de " + ConsoleUi.YELLOW + "Crédits Anciens" + ConsoleUi.RESET + ".");
+
         } else {
             int trapDmg = 10;
             player.setHp(player.getHp() - trapDmg);
