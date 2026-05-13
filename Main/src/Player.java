@@ -62,13 +62,13 @@ public class Player extends Entity {
             System.out.println(ConsoleUi.CYAN + "Niveau " + level + " | XP : " + xp + "/" + xpToNext + ConsoleUi.RESET);
 
             printMenu();
-            if (!scanner.hasNextInt()) {
-                System.out.println(ConsoleUi.RED + "Veuillez entrer un nombre !" + ConsoleUi.RESET);
-                scanner.next();
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println(ConsoleUi.RED + "Veuillez entrer un nombre valide !" + ConsoleUi.RESET);
                 continue;
             }
-
-            int choice = scanner.nextInt();
             isBlocking = false; // reset le blocage à chaque tour
 
             switch (choice) {
