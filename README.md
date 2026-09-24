@@ -1,15 +1,18 @@
-#  JavaQuest : Terminal RPG
+# JavaQuest : Terminal RPG
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-En_Développement-green?style=for-the-badge)
 
 **JavaQuest** est un jeu de rôle (RPG) développé en Java, jouable directement dans la console. Le projet met en avant des mécaniques de combat tactique, une gestion de progression de personnage et des événements aléatoires dynamiques.
+
 ---
+
 ## Table des matières
+
 * [Fonctionnalités principales](#fonctionnalités-principales)
-* [Architecture Technique](#️architecture-technique)
+* [Architecture Technique](#architecture-technique)
 * [Comment jouer ?](#comment-jouer-)
-* [Road Map (À venir)](#️road-map-à-venir)
+* [Road Map (À venir)](#road-map-à-venir)
 * [Auteur](#auteur)
 
 ---
@@ -24,6 +27,7 @@
 * **Interface Colorée :** Utilisation de codes ANSI pour une expérience visuelle immersive en terminal.
 
 ---
+
 ## Architecture Technique
 
 Le projet suit les principes de la **Programmation Orientée Objet (POO)** :
@@ -33,24 +37,36 @@ Le projet suit les principes de la **Programmation Orientée Objet (POO)** :
 * **Modularité :** Séparation des responsabilités avec un `EventSystem` dédié aux rencontres fortuites et un `ConsoleUi` pour l'affichage.
 * **Logique IA :** Les ennemis possèdent une intelligence de base (soins prioritaires, attaques critiques imprévisibles, blocages).
 
- ---
+---
 
 ## Comment jouer ?
 
 ### Prérequis
+
 * **JDK 21** ou plus récent.
 * Un terminal supportant les codes couleur ANSI (IntelliJ Terminal, PowerShell, Bash).
 
 ### Installation
+
 1. Clonez le repository :
-   ```bash
-   git clone https://github.com/DavidMVgit-coder/FINAL_PROJECT_JAVA.git
-2. Compliez le projet :
-    ```bash
-    javac *.java
+
+```bash
+   git clone https://github.com/david-mz/FINAL_PROJECT_JAVA.git
+```
+
+2. Compilez le projet :
+
+```bash
+   javac *.java
+```
+
 3. Lancez le jeu :
-     ```bash
-     java Main
+
+```bash
+   java Main
+```
+
+---
 
 ## Road Map (À venir)
 
@@ -58,8 +74,10 @@ Le projet suit les principes de la **Programmation Orientée Objet (POO)** :
 - [ ] **Système d'Équipement :** Ajout d'armes et d'armures avec des raretés différentes.
 - [ ] **Nouveaux Ennemis :** Ajout de boss avec des patterns d'attaque plus complexes.
 - [ ] **Sauvegarde :** Implémentation d'un système de sauvegarde via fichiers JSON ou texte.
+- [ ] **Meilleure architecture logicielle :** Refonte du code pour une structure plus propre, modulaire et facile à maintenir.
 
 ---
 
 ## Auteur
+
 * **David Martinez** - *Développeur Principal*
